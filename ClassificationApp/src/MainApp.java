@@ -35,17 +35,26 @@ public class MainApp {
 	
 	public static void test() {
 		String fileContent = utility.readFile("sample.txt");
-		NearestNeighborClassifier classifier = new NearestNeighborClassifier(utility.getFeatureMap(utility.TokenizeToListByLine(fileContent)));
-		//System.out.println(classifier.getNumInstances());
-		//classifier.oneDimentionEvaluation(classifier.extractFeatureSet(5));
-		//utility.printAllFeatureMap(classifier.extractAllFeatureSet());
-		//System.out.println(classifier.findBestFeature());
+//		NearestNeighborClassifier classifier = new NearestNeighborClassifier(utility.getFeatureMap(utility.TokenizeToListByLine(fileContent)));
+//		//System.out.println(classifier.getNumInstances());
+//		//classifier.oneDimentionEvaluation(classifier.extractFeatureSet(5));
+//		//utility.printAllFeatureMap(classifier.extractAllFeatureSet());
+//		//System.out.println(classifier.findBestFeature());
 	}
 	
+	
+	public static void test2(){
+		String fileContent = utility.readFile("sample.txt");
+		//utility.printFeatureMap(utility.getFeatureMap(fileContent));
+		NearestNeighborClassifier classifier = new NearestNeighborClassifier(utility.getFeatureMap(fileContent));
+		for(int i = 1; i< (classifier.getNumFeatures()+1); i++)
+			System.out.println(classifier.getFeatureScore1D(i));
+
+	}
 	public static void main(String[] args) {
 		//NearestNeighborClassifier classifier = new NearestNeighborClassifier();
 		
-		test();
+		test2();
 		
 		//start();
 		//System.out.println(utility.readFile("./sample.txt"));
