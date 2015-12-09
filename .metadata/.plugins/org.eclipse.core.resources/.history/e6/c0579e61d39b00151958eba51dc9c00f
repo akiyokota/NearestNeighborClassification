@@ -1,0 +1,6 @@
+
+public class NearestNeighborClassifier {
+	public NearestNeighborClassifier() {
+		System.out.println("constructor!");
+	}
+}

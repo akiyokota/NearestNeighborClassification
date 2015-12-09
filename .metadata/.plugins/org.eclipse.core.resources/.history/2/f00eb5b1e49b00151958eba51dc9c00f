@@ -1,0 +1,12 @@
+
+public class NearestNeighborClassifier {
+	
+	
+	public NearestNeighborClassifier() {
+		
+	}
+	
+	public double crossValidation(String features, String data) {
+		return 0.0;
+	}
+}

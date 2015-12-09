@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ClassificationApp/cs_170_small62.txt&apos; to &apos;sample.txt&apos;" description="Rename resource &apos;cs_170_small62.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="cs_170_small62.txt" name="sample.txt" stamp="1449604169545" updateReferences="true"/>
+</session>

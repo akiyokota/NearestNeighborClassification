@@ -1,0 +1,60 @@
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+
+public class NearestNeighborClassifier {
+	
+	private Map<Integer, List<Map<Integer, Double>>> data;
+	
+	public NearestNeighborClassifier(Map<Integer, List<Map<Integer, Double>>> data) {
+		this.data = data;
+	}
+	
+	public Map<Integer, List<Map<Integer, Double>>> getData() {
+		return data;
+	}
+
+	public void setData(Map<Integer, List<Map<Integer, Double>>> data) {
+		this.data = data;
+	}
+
+	/*
+	 * K-fold cross validation
+	 * Accuracy = [# of correct] / [# of instance in DB]
+	 */
+	public double crossValidation(String features, String data) {
+		//needs to implement
+		return 0.0;
+	}
+	
+	public void getNearestNeighbor() {
+		
+	}
+	
+	public int getNumInstances() {
+		int totalCount = 0;
+		for(int classNo : data.keySet()) { //for every class
+			for(Map<Integer, Double> features : data.get(classNo)){ //for each row of features
+				totalCount = totalCount + 1;
+			}
+		}
+		return totalCount;
+	}
+	
+	public List<Pair> extractFeatureSet(int featureNo) {
+		List<Pair> featureSet = new LinkedList<Pair> ();
+		for(int classNo: data.keySet()) {
+			for(Map<Integer, Double> features: data.get(classNo)){
+				featureSet.add(new Pair(classNo, features.get(featureNo)));
+			}
+		}
+		return featureSet;
+	}
+	
+
+	
+	public void f1(){
+		List<Pair> featureSet = extractFeatureSet(1);
+	}
+}

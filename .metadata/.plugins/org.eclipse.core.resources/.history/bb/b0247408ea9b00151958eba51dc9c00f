@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class classifierUtilities {
+	public String readFile(String filename) {
+	    try {
+	    	StringBuilder content = new StringBuilder();
+	    	BufferedReader br = new BufferedReader(new FileReader(filename));
+	    	String line;
+	    	while(( line = br.readLine())!=null) 
+	    		content.append(line).append("\n");
+	    	br.close();
+	    	return content.toString();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    return "";
+	}
+	
+	public double normalizeValues(String value) {
+		//needs to implement
+		return 0.0;
+	}
+}

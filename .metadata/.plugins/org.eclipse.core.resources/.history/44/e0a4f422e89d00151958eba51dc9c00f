@@ -1,0 +1,70 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+
+public class classifierUtilities {
+	public String readFile(String filename) {
+	    try {
+	    	StringBuilder content = new StringBuilder();
+	    	BufferedReader br = new BufferedReader(new FileReader(filename));
+	    	String line = "";
+	    	while(( line = br.readLine())!=null) 
+	    		content.append(line).append("\n");
+	    	br.close();
+	    	return content.toString();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    return "";
+	}
+	
+	public void printList(List<String> list) {
+		for(String s : list) {
+			System.out.println(s);
+		}
+	}
+	
+	public void printList2(List<String> list) {
+		for(String s: list) {
+			printList(TokenizeToListBySpace(s));
+		}
+	}
+	
+	public List<String> TokenizeToListByLine(String content) {
+		List <String> tokens = new LinkedList<String> ();
+		
+		StringTokenizer st = new StringTokenizer(content, "\n");
+		
+		while(st.hasMoreElements()) {
+			tokens.add(st.nextElement().toString());
+		}
+		return tokens;
+	}
+	
+	public List<String> TokenizeToListBySpace(String content) {
+		List <String> tokens = new LinkedList<String> ();
+		
+		StringTokenizer st = new StringTokenizer(content, " ");
+		
+		while(st.hasMoreElements()) {
+			tokens.add(st.nextElement().toString());
+		}
+		return tokens;
+	}
+	
+	public Map<Integer, String> getRawFeatureMap(List<String> data) {
+		for(String line : data) {
+			
+		}
+	}
+	
+	public double normalizeValues(String value) {
+		//needs to implement
+		return 0.0;
+	}
+}

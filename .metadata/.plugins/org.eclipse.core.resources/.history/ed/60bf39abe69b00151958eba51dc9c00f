@@ -1,0 +1,21 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class classifierUtilities {
+	public String readFile(String file) {
+		//needs to implement
+		try{
+			return new FileReader(new File(file)).read(new char[(int) new File(file).length()]);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
+	public double normalizeValues(String value) {
+		//needs to implement
+		return 0.0;
+	}
+}

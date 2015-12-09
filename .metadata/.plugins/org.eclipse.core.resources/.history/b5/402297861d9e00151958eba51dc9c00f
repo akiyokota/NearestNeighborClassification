@@ -1,0 +1,13 @@
+
+public class NearestNeighborClassifier {
+	
+	
+	public NearestNeighborClassifier() {
+		
+	}
+	
+	public double crossValidation(String features, String data) {
+		//needs to implement
+		return 0.0;
+	}
+}

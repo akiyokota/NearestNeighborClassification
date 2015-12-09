@@ -1,0 +1,12 @@
+
+public class classifierUtilities {
+	public String readFile(String file) {
+		//needs to implement
+		return "";
+	}
+	
+	public double normalizeValues(String value) {
+		//needs to implement
+		return 0.0;
+	}
+}

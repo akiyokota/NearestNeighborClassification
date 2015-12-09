@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+
+public class MainApp {
+	
+	public static String testFile = "./sample.txt";
+	public static int algorithm = 0;
+	public static classifierUtilities utility = new classifierUtilities();
+	
+	public static String getUserInput() {
+		@SuppressWarnings("resource")
+		Scanner reader = new Scanner(System.in);
+		return reader.nextLine();
+	}
+	
+	public static void start() {
+		System.out.println("Welcome to Akiyo Yokota's Feature Selection Algorithm.");
+		System.out.println("Type in the name of the file to text : ");
+		testFile = getUserInput();
+		
+		System.out.println("Type the number of the algorithm you want to run.");
+		System.out.println("1) Forward Selection");
+		System.out.println("2) Backward Elimination");
+		System.out.println("3) Akiyo's Special Algorithm.");
+		algorithm = Integer.parseInt(getUserInput());
+		
+		String fileContent = utility.readFile(testFile);
+		
+		System.out.println(testFile);
+		System.out.println(algorithm);
+	}
+	
+	
+	public static void main(String[] args) {
+		NearestNeighborClassifier classifier = new NearestNeighborClassifier();
+		start();
+		//System.out.println(utility.readFile("./sample.txt"));
+	}
+}

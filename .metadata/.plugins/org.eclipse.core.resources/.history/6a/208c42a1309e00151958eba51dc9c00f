@@ -1,0 +1,141 @@
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+
+public class NearestNeighborClassifier {
+	
+	private Map<Integer, List<Map<Integer, Double>>> data;
+	
+	public NearestNeighborClassifier(Map<Integer, List<Map<Integer, Double>>> data) {
+		this.data = data;
+	}
+	
+	public Map<Integer, List<Map<Integer, Double>>> getData() {
+		return data;
+	}
+
+	public void setData(Map<Integer, List<Map<Integer, Double>>> data) {
+		this.data = data;
+	}
+
+	/*
+	 * K-fold cross validation
+	 * Accuracy = [# of correct] / [# of instance in DB]
+	 */
+	public double crossValidation(String features, String data) {
+		//needs to implement
+		return 0.0;
+	}
+	
+	
+	public double distanceCalc(double x, double y) {
+		return (x-y) * (x-y);
+	}
+	
+	public Pair getNearestNeighbor(double x, List<Pair> featureSet) {
+		Pair nearest = null;
+		double nearestDistance = 5000;
+		for (Pair p : featureSet){
+			if(nearest==null)
+				nearest = p;
+			double distance = distanceCalc(x, p.getSecond());
+			if(distance < nearestDistance && distance!=0) {
+				nearest = p;
+				nearestDistance =distance;
+			}
+		}		
+		return nearest;
+	}
+	
+	public int getNumInstances() {
+		int totalCount = 0;
+		for(int classNo : data.keySet()) { //for every class
+			for(Map<Integer, Double> features : data.get(classNo)){ //for each row of features
+				totalCount = totalCount + 1;
+			}
+		}
+		return totalCount;
+	}
+	
+	public List<Pair> extractFeatureSet(int featureNo) {
+		List<Pair> featureSet = new LinkedList<Pair> ();
+		for(int classNo: data.keySet()) {
+			for(Map<Integer, Double> features: data.get(classNo)){
+				featureSet.add(new Pair(classNo, features.get(featureNo)));
+			}
+		}
+		return featureSet;
+	}
+	
+	
+
+	public int oneDimentionEvaluation(List<Pair> featureSet) {
+		int numCorrect = 0;
+		for (Pair p : featureSet){
+			Pair nearestNeighbor = getNearestNeighbor(p.getSecond(), featureSet);
+			if(nearestNeighbor.getFirst().equals(p.getFirst())) {
+				numCorrect = numCorrect + 1;
+			}
+		}
+		return numCorrect;
+	}
+	
+	public int multiDimentionEvaluation( Map<Integer, Pair > data) {
+		int numCorrect = 0;
+		
+		//
+		
+		return numCorrect;
+	}
+	
+	public void f1(){
+		List<Pair> featureSet = extractFeatureSet(1);
+		
+		double threshold = 1.0;
+		
+		double k1 = -1;
+		double k2 = -1;
+		
+		for(Pair p : featureSet) {
+			
+		}
+	}
+	
+	
+	public Map<Integer, List<Pair>> extractAllFeatureSet() {
+		Map<Integer, List<Pair>> allFeatureSet = new HashMap<Integer, List<Pair>>();
+		
+		for(int classNo : data.keySet()) { //for every class
+			for(Map<Integer, Double> features : data.get(classNo)){ //for each row of features
+				for(int i = 0; features.containsKey(i); i++) {	//features of each column
+					//System.out.println("Class NO" + classNo + "\t" + "Feature" + i + " : " + features.get(i));
+					Pair set = new Pair(classNo, features.get(i));
+					if(allFeatureSet.containsKey(i)) {
+						allFeatureSet.get(i).add(set);
+					} else {
+						List<Pair> list= new LinkedList<Pair> ();
+						list.add(set);
+						allFeatureSet.put(i, list);
+					}
+				}
+			}
+		}
+		
+		return allFeatureSet;
+	}
+	
+	public int findBestFeature() {
+		Map<Integer, List<Pair>> allFeatureSet = extractAllFeatureSet();
+		double bestScore = 0.0;
+		int bestFeature = -1;
+		for(Integer feature: allFeatureSet.keySet()) {
+			double score = oneDimentionEvaluation(allFeatureSet.get(feature));
+			if(score>best)
+				best = feature;
+			
+		}
+		return best;
+	}
+}

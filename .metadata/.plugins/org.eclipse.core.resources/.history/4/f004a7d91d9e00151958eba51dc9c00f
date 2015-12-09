@@ -1,0 +1,29 @@
+import java.util.List;
+import java.util.Map;
+
+
+public class NearestNeighborClassifier {
+	
+	private Map<Integer, List<Map<Integer, Double>>> data;
+	
+	public NearestNeighborClassifier(Map<Integer, List<Map<Integer, Double>>> data) {
+		this.data = data;
+	}
+	
+	public Map<Integer, List<Map<Integer, Double>>> getData() {
+		return data;
+	}
+
+	public void setData(Map<Integer, List<Map<Integer, Double>>> data) {
+		this.data = data;
+	}
+
+	public double crossValidation(String features, String data) {
+		//needs to implement
+		return 0.0;
+	}
+	
+	public int getNumInstances() {
+		
+	}
+}

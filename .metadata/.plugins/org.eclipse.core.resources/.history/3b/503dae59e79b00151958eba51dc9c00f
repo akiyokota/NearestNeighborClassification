@@ -1,0 +1,28 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class classifierUtilities {
+	public String readFile(String filename) {
+		//needs to implement
+		String content = null;
+	    File file = new File(file); //for ex foo.txt
+	    FileReader reader = null;
+	    try {
+	        reader = new FileReader(file);
+	        char[] chars = new char[(int) file.length()];
+	        reader.read(chars);
+	        content = new String(chars);
+	        reader.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	    return content;
+	}
+	
+	public double normalizeValues(String value) {
+		//needs to implement
+		return 0.0;
+	}
+}
