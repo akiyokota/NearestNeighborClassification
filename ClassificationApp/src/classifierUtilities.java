@@ -25,20 +25,6 @@ public class classifierUtilities {
 	    return "";
 	}
 	
-	public void printList(List<String> list) {
-		for(String s : list) {
-			//System.out.println(new BigDecimal(s).doubleValue());
-			System.out.println(s);
-		}
-	}
-	
-	public void printList2(List<String> list) {
-		for(String s: list) {
-			printList(TokenizeToListBySpace(s));
-			//printList(new BigDecimal(TokenizeToListBySpace(s)).doubleValue());
-		}
-	}
-	
 	public List<String> TokenizeToListByLine(String content) {
 		List <String> tokens = new LinkedList<String> ();
 		
@@ -82,74 +68,4 @@ public class classifierUtilities {
 		}
 		return featureMap;
 	}
-	
-	
-	public void printFeatureMap (List< Map < Integer, Map< Integer, Double>>> map) {
-		for( Map < Integer, Map< Integer, Double>> row : map) {
-			for(Integer classNo : row.keySet()) {
-				for (Integer featureNo : row.get(classNo).keySet()) {
-					System.out.println("Class No : " + classNo + "\tFeature No : " + featureNo + "\tFeature Val: " + row.get(classNo).get(featureNo));
-				}
-			}
-		}
-	}
-	
-	
-//	public void printFeatureMap (Map<Integer, List<Map<Integer, Double>>> map) {
-//		System.out.println("hello");
-//		for(int classNo : map.keySet()) { //for every class
-//			for(Map<Integer, Double> features : map.get(classNo)){ //for each row of features
-//				for(int i = 0; features.containsKey(i); i++) {	//features of each column
-//					System.out.println("Class NO" + classNo + "\t" + "Feature" + i + " : " + features.get(i));
-//				}
-//			}
-//		}
-//	}
-//	
-//	public Map<Integer, List<Map<Integer, Double>>> getFeatureMap(List<String> data) {		
-//		//<class, <feature#, feature Val>>
-//		Map<Integer, List<Map<Integer, Double>>> featureMap = new HashMap<Integer, List<Map<Integer, Double>>> ();
-//		
-//		List<Map<Integer, Double>> class1 = new LinkedList<Map<Integer, Double>>();
-//		List<Map<Integer, Double>> class2 = new LinkedList<Map<Integer, Double>>();
-//		for(String line : data) {
-//			StringTokenizer st = new StringTokenizer(line, " ");
-//			if(!st.hasMoreElements())
-//				System.out.println("empty line");
-//			//extract class (col1)
-//			int classNo = new BigDecimal(st.nextElement().toString()).intValue();
-//
-//			//extract features
-//			Map<Integer, Double> features = new HashMap<Integer, Double> ();
-//			for(int i = 0; st.hasMoreElements(); i++){
-//				Double val = new BigDecimal(st.nextElement().toString()).doubleValue();
-//				features.put(i, val);
-//			}
-//			
-//			//put in list
-//			if(classNo == 1) 
-//				class1.add(features);
-//			else
-//				class2.add(features);
-//		}
-//		
-//		featureMap.put(1, class1);
-//		featureMap.put(2, class2);
-//		
-//		return featureMap;
-//	}
-//	
-//	public void printPairList(List<Pair> list) {
-//		for(Pair p : list ) {
-//			System.out.println("Class : " + p.getFirst() + "\tFeature : " + p.getSecond());
-//		}
-//	}
-//	
-//	public void printAllFeatureMap(Map<Integer, List<Pair>> sets){
-//		for(Integer feature : sets.keySet()) {
-//			for(Pair p : sets.get(feature)) {
-//				System.out.println("Feature : " + feature + "\tClass : " + p.getFirst() + "\tVal : " + p.getSecond());
-//			}
-//		}
-//	}
 }
